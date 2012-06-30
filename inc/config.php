@@ -16,4 +16,5 @@ $Config['database_name'] = 'purpl';
 
 
 /* Global Variables */
+$Config['site_name'] = 'Purpl Official Development';
 $Config['default_theme'] = 'default';
