@@ -8,19 +8,19 @@ class Template {
     
     function GeneratePage($AdditionalBlocks = array(), $Tags = array())
     {
-        $Page = $this->GetBlock('header', $Tags);
+        $Page = Template::GetBlock('header', $Tags);
         
         foreach($AdditionalBlocks as $Block)
         {
-            $Page .= $this->GetBlock($Block, $Tags);
+            $Page .= Template::GetBlock($Block, $Tags);
         }
         
-        $Page .= $this->GetBlock('footer', $Tags);
+        $Page .= Template::GetBlock('footer', $Tags);
         
         return $Page;
     }
     
-    function GetBlock($Name = NULL, $Tags = array())
+    function GetBlock($Name = NULL, $Tags = array(), $Refine = FALSE)
     {
         
         if($Name == NULL) die("No block name was passed."); else require('config.php');
@@ -36,19 +36,24 @@ class Template {
         }
         
         if(count($Tags) > 0) {
-            return $this->_ParseBlock($BlockContent, $Tags);
+            return Template::_ParseBlock($BlockContent, $Tags);
         } else {
-            return $BlockContent;
+            if($Refine == TRUE) {
+                return Template::_ParseBlock($BlockContent);
+            } else {
+                return $BlockContent;    
+            }
         }
     }
     
     
     function _ParseBlock($Block, $TagsArray = array())
     {
-        $ParsedContent = '';
         foreach($TagsArray as $Tag => $Val) {
             $Block = str_replace('{'.$Tag.'}', $Val, $Block);
         }
+
+        $Block = preg_replace('/{B:(\w+)}/e', '$1', $Block);
         
         return $Block;
     }
