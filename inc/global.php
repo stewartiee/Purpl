@@ -7,11 +7,9 @@
 define("IN_PURPL", TRUE);
 require_once("inc/config.php");
 
-/* Load Database Class */
-require_once(INC_DIR."class.database.php");
-$Database = new Database;
-
-$Database->DatabaseConnect();
+/* Load Text Class */
+require_once(INC_DIR."class.textparser.php");
+$Text = new Text;
 
 /* Load Template Class */
 require_once(INC_DIR."class.template.php");
