@@ -1,1 +1,6 @@
 @import "home.css";
+@import "http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600";
+
+span.purple-text {
+    color: #936BA5;
+}

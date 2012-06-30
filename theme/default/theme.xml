@@ -14,30 +14,30 @@ Theme Author: Ryan Stewart
     <block name="header">
 <![CDATA[<html>
     <head>
-        <title>{Title}</title>
+        <title>{title}</title>
         <link rel="stylesheet" type="text/css" href="theme/default/css/global.css">
     </head>
     <body>
         <div id="container">
             <div id="header">
-                <h1>Purpl</h1>
+                <div id="logo_block"><a href="index.php">Purpl, 0.01</a></div>
                 <ul id="menu">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="index.php?a=p&id=2">About</a></li>
+                    <li><a href="index.php?a=p&id=about">About</a></li>
                     <li><a href="#">Link</a></li>
                     <li><a href="#">Link</a></li>
                 </ul>
-            </div>
-            
-            <div id="content">
-                <h1>{Title}</h1>
-                {Content}
             </div>]]>
     </block>
     <block name="footer">
-<![CDATA[           <div id="footer"><p>Powered by Purpl, {ScriptExecution}.</p></div>
+<![CDATA[           <div id="footer"><p>Powered by <span class="purple-text">Purpl</span></p></div>
         </div>
     </body>
 </html>]]>
+    </block>
+    <block name="content_output">
+<![CDATA[            <div id="content">
+                            {content}
+                    </div>]]>
     </block>
 </template>
