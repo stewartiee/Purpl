@@ -4,3 +4,24 @@
 span.purple-text {
     color: #936BA5;
 }
+
+#notification-bar {
+    background-color: #FFFAE6;
+    border-bottom: 1px solid #FAE6BE;
+    padding: 10px 5px;
+}
+
+#notification-bar p {
+    width: 890px;
+    color: #505050;
+    margin: 0 auto;
+}
+
+#notification-bar .button {
+    display: block;
+    float: right;
+    background-color: #FCECB3;
+    color: #5E5227;
+    margin-top: -5px;
+    padding: 5px;
+}

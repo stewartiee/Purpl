@@ -11,7 +11,7 @@ class Plugins {
     
     function Run_Hook($Name = NULL)
     {
-        if($Name = 'home_start') {
+        if($Name == 'global_start') {
             include(INC_DIR."plugins/hello_world/hello_world.php");
         }
     }

@@ -12,32 +12,42 @@ Theme Author: Ryan Stewart
 
 <template>
     <block name="header">
-<![CDATA[<html>
+<![CDATA[<!DOCTYPE html>
+<html>
     <head>
-        <title>{title}</title>
+        <title>{title} - {site_name}</title>
         <link rel="stylesheet" type="text/css" href="theme/default/css/global.css">
     </head>
     <body>
         <div id="container">
             <div id="header">
-                <div id="logo_block"><a href="index.php">Purpl, 0.01</a></div>
+                <div id="logo-block">
+                    <a href="index.php"><img border="0" src="theme/default/images/logo.png" /></a>
+                    <span class="version">Version 0.0.1</span>
+                </div>
+                
                 <ul id="menu">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="index.php?a=p&id=about">About</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
+                    <li><a href="index.php?a=page">Home</a></li>
+                    <li><a href="index.php?a=page&i=about">About</a></li>
                 </ul>
             </div>]]>
     </block>
     <block name="footer">
-<![CDATA[           <div id="footer"><p>Powered by <span class="purple-text">Purpl</span></p></div>
+<![CDATA[           
         </div>
     </body>
 </html>]]>
     </block>
     <block name="content_output">
-<![CDATA[            <div id="content">
+<![CDATA[            <div id="content" class="{id} {class}">
+							<h1 class="post-title">{page_title}</h1>
                             {content}
                     </div>]]>
+    </block>
+    <block name="test">
+<![CDATA[<strong>This is a test.</strong>]]>
+    </block>
+    <block name="awesome">
+<![CDATA[<h1>YAY</h1>]]>
     </block>
 </template>

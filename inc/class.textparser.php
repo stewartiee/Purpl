@@ -18,8 +18,33 @@ class Text {
             $Content = "content/$Identifier/$File.txt";
         }
         
+        $PageArray = array();
+        
         if(Text::_FileExists($Content)) :
-            return json_decode(file_get_contents($Content), true);
+        	$File = file_get_contents($Content);
+        	$Sections = explode("\n------------\n", $File);
+        	$CountSections = Text::_Count($Sections);
+        	
+        	for($i_section = 0;$i_section < $CountSections;$i_section++) {
+        		$Section = $Sections[$i_section];
+        		
+        		$Line = explode(" :: ", $Section);
+        		
+        		foreach($Line as $Key => $Value) {
+        			
+        			if($Key == 0 and $i_section != 0) {
+        				$PageArray[$Tag] = $Tag_Value;
+        			}
+        			
+        			if($Key == 0) $Tag = str_replace(' ', '', $Value);
+        			if($Key == 1) $Tag_Value = $Value;
+        			
+        		}
+        		
+        		$PageArray[$Tag] = $Tag_Value;
+        	}
+        	
+        	return $PageArray;
         else :
             return Text::_Error404();
         endif;
@@ -38,6 +63,54 @@ class Text {
         endif;
     }
     
+    function PluginContent($Identifier = NULL, $File = NULL, $View = 'index')
+    {
+        require('config.php');
+        
+        echo "Identifier = $Identifier, File = $File, View = $View";
+        
+        
+        if($Identifier == NULL) die("No identifier for the page was found.");
+
+		$Content = PLUGIN_DIR."$Identifier/content/$File.txt";
+		
+        if(Text::_FileExists($Content)) :
+            
+        	$File = file_get_contents($Content);
+        	$Sections = explode("\n------------\n", $File);
+        	$CountSections = Text::_Count($Sections);
+        	
+        	for($i_section = 0;$i_section < $CountSections;$i_section++) {
+        		$Section = $Sections[$i_section];
+        		
+        		$Line = explode(" :: ", $Section);
+        		
+        		foreach($Line as $Key => $Value) {
+        			
+        			if($Key == 0 and $i_section != 0) {
+        				$PageArray[$Tag] = $Tag_Value;
+        			}
+        			
+        			if($Key == 0) $Tag = str_replace(' ', '', $Value);
+        			if($Key == 1) $Tag_Value = $Value;
+        			
+        		}
+        		
+        		$PageArray[$Tag] = $Tag_Value;
+        	}
+        	
+        	require_once(PLUGIN_DIR."$Identifier/plugin.php");
+        	
+        	$Plugin = new $Identifier_Plugin;
+        	
+        	return $Plugin->view($PageArray);
+        	
+        	//return $Plugin->$View($PageArray);
+       	else :
+            return Text::_Error404();
+        endif;
+    }
+    
     function _Error404()
     {
         return json_decode(file_get_contents("content/errors/404.txt"), true);
@@ -51,4 +124,8 @@ class Text {
             return FALSE;
         endif;
     }
+    
+    function _Count($Array) {
+    	return count($Array);
+	}
 } // close class TextParse

@@ -1,0 +1,39 @@
+/*
+ * Purpl
+ * Development, 0.01 
+ */
+ 
+ #blackout {
+     width: 100%;
+     height: 100%;
+     display: block;
+     background-color:rgba(201,201,201,0.5);
+     z-index: 1000;
+     position: absolute;
+     top: 0;
+     left: 0;
+ }
+ 
+ #admin-toolbar {
+     width: 100%;
+     display: none;
+     background-color: #936BA5;
+     position: absolute;
+     top: 0;
+     left: 0;
+     z-index: 1010;
+ }
+ 
+ #admin-toolbar ul#menu {
+     list-style-type: none;
+ }
+ 
+ #admin-toolbar ul#menu li {
+     margin-right: 5px;
+     padding: 5px;
+ }
+ 
+ .purpl-block {
+     z-index: 1010;
+     position: relative;
+ }

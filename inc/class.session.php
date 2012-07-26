@@ -1,12 +1,16 @@
 <?php
-
-/**
- * Scadoodio CMS
- * Written by Ryan Stewart
- * -----------------------------------------------
- * 
- * @name class
- * @author ryanstewart
- *  
+/*
+ * Purpl
+ * Development, 0.01 
  */
-?>
+
+class Session {
+    
+    
+    function CheckSession() 
+    {
+        
+    }
+    
+    
+} // close class Session

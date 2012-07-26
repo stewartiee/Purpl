@@ -1,1 +1,29 @@
-{"title":"Home","meta_description":"This is my meta description.","hide_title":"TRUE","content":"<h1>Your new CMS system awaits and it's <span class=\"purple-text\">smaller<\/span> than you think.<\/h1><img border=\"0\" src=\"theme/default/images/folder-img.jpg\" /><p>Long gone are the days of bloated software, Purpl focuses mainly on your content making your website easier to manage.<\/p><pre>/* Get the home page, then output it to the screen. */\n$Page = Text::PageContent('home');\n\necho Template::GeneratePage(array('content_output'), $Page);<\/pre>"}
+title :: Home
+------------
+meta_description :: This is my meta description.
+------------
+id :: home
+------------
+class :: purpl-block
+------------
+page_title :: What is Purpl?
+------------
+content :: 
+	<p>
+		Purpl is a new painfully simple Content Management System. Unlike most traditional content management systems, Purpl is a flat file based site meaning it can be used almost everywhere! Pages are stored as text files making page load low and your memory usage equally low. Purpl understands that humans are prone to mistakes which is why every time you make a change to a page a backup is created for your convenience.
+	</p>
+	<p>
+		The anatomy of a page is created with <strong>2 lines</strong> of code. Yes, only 2. These 2 lines are used to: 
+		<ol>
+			<li>Retrieve the page content</li>
+			<li>Output it to the screen</li>
+		</ol> 
+		A simple page will look like this: 
+	</p>
+	<pre>/* Get the home page, then output it to the screen. */
+$Page = Text::PageContent('home');
+	
+echo Template::GeneratePage(array('content_output'), $Page);</pre>
+	<p>
+		In this example we are retrieving the page content for our <strong>home</strong> page. Once we have that data we are sending it to our Template parser. It will read the data along with any other optional templates, in this case we want to display it in the template block called <strong>content_output</strong>, then the system will work it's magic and a page will be shown.
+	</p>

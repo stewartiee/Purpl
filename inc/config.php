@@ -6,6 +6,7 @@
 
 define("BASE_DIR", "");
 define("INC_DIR", BASE_DIR."inc/");
+define("PLUGIN_DIR", INC_DIR."plugins/");
 define("THEME_DIR", BASE_DIR."theme/");
 
 /* Database Connection Variables */

@@ -7,6 +7,10 @@
 define("IN_PURPL", TRUE);
 require_once("inc/config.php");
 
+/* Load General Class */
+require_once(INC_DIR."class.general.php");
+$General = new General;
+
 /* Load Text Class */
 require_once(INC_DIR."class.textparser.php");
 $Text = new Text;
@@ -19,8 +23,5 @@ $Template = new Template;
 require_once(INC_DIR."class.plugins.php");
 $Plugins = new Plugins;
 
-
-function GetVariable($Name = NULL) {
-    if(isset($_GET[$Name])) $Get = $_GET[$Name]; else $Get = NULL;
-    return $Get;
-}
+/* Run Global Hook */
+$Plugins::Run_Hook('global_start');
